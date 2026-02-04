@@ -3,16 +3,23 @@ module.exports = {
     darkMode: ["class"],
     content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html"
   ],
   theme: {
   	extend: {
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
   		colors: {
+  			'paula-pink': {
+  				light: '#FCE7F3',
+  				medium: '#FBCFE8',
+  				DEFAULT: '#F9A8D4',
+  				dark: '#EC4899'
+  			},
+  			'paula-brown': {
+  				light: '#8B7355',
+  				DEFAULT: '#5D4037',
+  				dark: '#4A3728'
+  			},
+  			'paula-cream': '#FFFBF0',
+  			'paula-accent': '#BE185D',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -54,29 +61,21 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
-  		keyframes: {
-  			'accordion-down': {
-  				from: {
-  					height: '0'
-  				},
-  				to: {
-  					height: 'var(--radix-accordion-content-height)'
-  				}
-  			},
-  			'accordion-up': {
-  				from: {
-  					height: 'var(--radix-accordion-content-height)'
-  				},
-  				to: {
-  					height: '0'
-  				}
-  			}
+  		fontFamily: {
+  			'heading': ['Playfair Display', 'serif'],
+  			'body': ['Manrope', 'sans-serif']
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
   		},
   		animation: {
-  			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+  			'float': 'float 3s ease-in-out infinite',
+  			'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
   		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
-};
+}
