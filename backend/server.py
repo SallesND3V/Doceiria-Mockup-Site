@@ -572,16 +572,19 @@ app.include_router(api_router)
 # Parse CORS origins
 cors_origins = os.environ.get('CORS_ORIGINS', '*')
 if cors_origins == '*':
-    allow_origins = ['*']
-    allow_credentials = False  # Cannot use credentials with *
+    allow_origins = []
+    allow_origin_regex = r".*"
+    allow_credentials = True
 else:
-    allow_origins = [origin.strip() for origin in cors_origins.split(',')]
+    allow_origins = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
+    allow_origin_regex = None
     allow_credentials = True
 
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=allow_credentials,
     allow_origins=allow_origins,
+    allow_origin_regex=allow_origin_regex,
     allow_methods=["*"],
     allow_headers=["*"],
 )
