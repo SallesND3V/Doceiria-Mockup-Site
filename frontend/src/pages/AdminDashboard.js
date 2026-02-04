@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 import { 
-  LayoutDashboard, Cake, FolderOpen, MessageSquare, LogOut, Menu, X, Plus, Pencil, Trash2, Upload, Star, Home
+  LayoutDashboard, Cake, FolderOpen, MessageSquare, LogOut, Menu, X, Plus, Pencil, Trash2, Upload, Star, Home, Settings, Instagram, RefreshCw, ExternalLink, AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
