@@ -308,6 +308,133 @@ async def delete_testimonial(testimonial_id: str, current_user: dict = Depends(g
         raise HTTPException(status_code=404, detail="Depoimento não encontrado")
     return {"message": "Depoimento removido"}
 
+# ==================== Site Settings Routes ====================
+
+@api_router.get("/settings")
+async def get_settings():
+    settings = await db.settings.find_one({"id": "site_settings"}, {"_id": 0})
+    if not settings:
+        # Return defaults
+        return {
+            "id": "site_settings",
+            "hero_image_url": "",
+            "logo_url": "",
+            "instagram_access_token": None,
+            "instagram_user_id": None
+        }
+    # Don't expose the access token publicly
+    settings.pop("instagram_access_token", None)
+    return settings
+
+@api_router.get("/settings/admin")
+async def get_settings_admin(current_user: dict = Depends(get_current_user)):
+    settings = await db.settings.find_one({"id": "site_settings"}, {"_id": 0})
+    if not settings:
+        return {
+            "id": "site_settings",
+            "hero_image_url": "",
+            "logo_url": "",
+            "instagram_access_token": "",
+            "instagram_user_id": ""
+        }
+    return settings
+
+@api_router.put("/settings")
+async def update_settings(data: SiteSettingsUpdate, current_user: dict = Depends(get_current_user)):
+    update_data = {k: v for k, v in data.model_dump().items() if v is not None}
+    update_data["updated_at"] = datetime.now(timezone.utc).isoformat()
+    
+    result = await db.settings.update_one(
+        {"id": "site_settings"},
+        {"$set": update_data},
+        upsert=True
+    )
+    
+    settings = await db.settings.find_one({"id": "site_settings"}, {"_id": 0})
+    return settings
+
+# ==================== Instagram Sync Route ====================
+
+@api_router.post("/instagram/sync")
+async def sync_instagram(current_user: dict = Depends(get_current_user)):
+    """
+    Sync photos from Instagram using Graph API.
+    Requires instagram_access_token and instagram_user_id in settings.
+    """
+    settings = await db.settings.find_one({"id": "site_settings"}, {"_id": 0})
+    
+    if not settings or not settings.get("instagram_access_token") or not settings.get("instagram_user_id"):
+        raise HTTPException(
+            status_code=400, 
+            detail="Instagram não configurado. Configure o Access Token e User ID nas configurações."
+        )
+    
+    import requests
+    
+    access_token = settings["instagram_access_token"]
+    user_id = settings["instagram_user_id"]
+    
+    try:
+        # Fetch media from Instagram Graph API
+        url = f"https://graph.instagram.com/{user_id}/media"
+        params = {
+            "fields": "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp",
+            "access_token": access_token,
+            "limit": 20
+        }
+        
+        response = requests.get(url, params=params)
+        
+        if response.status_code != 200:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Erro ao acessar Instagram API: {response.json().get('error', {}).get('message', 'Token inválido ou expirado')}"
+            )
+        
+        data = response.json()
+        media_items = data.get("data", [])
+        
+        # Get default category
+        default_category = await db.categories.find_one({}, {"_id": 0})
+        category_id = default_category["id"] if default_category else "cat-especial"
+        
+        imported_count = 0
+        
+        for item in media_items:
+            if item["media_type"] not in ["IMAGE", "CAROUSEL_ALBUM"]:
+                continue
+            
+            # Check if already imported
+            existing = await db.cakes.find_one({"instagram_url": item["permalink"]}, {"_id": 0})
+            if existing:
+                continue
+            
+            # Get image URL
+            image_url = item.get("media_url") or item.get("thumbnail_url")
+            if not image_url:
+                continue
+            
+            # Create cake entry
+            cake = {
+                "id": str(uuid.uuid4()),
+                "name": (item.get("caption") or "Criação Paula Veiga")[:50],
+                "description": item.get("caption") or "Mais uma delícia da Paula Veiga!",
+                "price": 0,
+                "category_id": category_id,
+                "image_url": image_url,
+                "instagram_url": item["permalink"],
+                "featured": False,
+                "created_at": datetime.now(timezone.utc).isoformat()
+            }
+            
+            await db.cakes.insert_one(cake)
+            imported_count += 1
+        
+        return {"message": f"{imported_count} fotos importadas do Instagram com sucesso!"}
+        
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Erro de conexão: {str(e)}")
+
 # ==================== Stats Route ====================
 
 @api_router.get("/stats")
