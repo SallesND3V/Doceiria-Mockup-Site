@@ -177,8 +177,8 @@ const Gallery = () => {
                   {selectedCake.description}
                 </p>
                 <div className="mt-6">
-                  <p className="text-3xl font-bold text-paula-accent font-body mb-4">
-                    {formatPrice(selectedCake.price)}
+                  <p className="text-paula-accent font-semibold font-body mb-4">
+                    Consulte valores pelo WhatsApp
                   </p>
                   <motion.a
                     href={`https://wa.me/5581984120292?text=${encodeURIComponent(`Olá! Gostaria de encomendar o ${selectedCake.name}`)}`}

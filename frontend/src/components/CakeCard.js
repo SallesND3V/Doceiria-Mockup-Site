@@ -1,14 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const CakeCard = ({ cake, onClick }) => {
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price);
-  };
-
+export const CakeCard = ({ cake, onClick, showPrice = false }) => {
   return (
     <motion.div
       className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-pink-100 cursor-pointer"
@@ -36,22 +29,19 @@ export const CakeCard = ({ cake, onClick }) => {
         <p className="text-paula-brown/70 text-sm mb-3 line-clamp-2 font-body">
           {cake.description}
         </p>
-        <div className="flex items-center justify-between">
-          <span className="text-paula-accent font-bold text-lg font-body">
-            {formatPrice(cake.price)}
-          </span>
+        <div className="flex items-center justify-end">
           <motion.button
             className="bg-paula-pink-light text-paula-brown-dark px-4 py-2 rounded-full text-sm font-medium hover:bg-paula-accent hover:text-white transition-colors font-body"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={(e) => {
               e.stopPropagation();
-              const message = encodeURIComponent(`Olá! Gostaria de encomendar o ${cake.name}`);
+              const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${cake.name}`);
               window.open(`https://wa.me/5581984120292?text=${message}`, '_blank');
             }}
             data-testid={`order-btn-${cake.id}`}
           >
-            Encomendar
+            Saiba mais
           </motion.button>
         </div>
       </div>
