@@ -911,6 +911,7 @@ const AdminDashboard = () => {
           <Route path="cakes" element={<CakesPage />} />
           <Route path="categories" element={<CategoriesPage />} />
           <Route path="testimonials" element={<TestimonialsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
           <Route path="*" element={<DashboardPage />} />
         </Routes>
       </main>
