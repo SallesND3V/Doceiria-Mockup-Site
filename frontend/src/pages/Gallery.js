@@ -45,6 +45,13 @@ const Gallery = () => {
     }).format(price);
   };
 
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(price);
+  };
+
   const getCategoryName = (categoryId) => {
     const category = categories.find(c => c.id === categoryId);
     return category ? category.name : '';
