@@ -589,10 +589,12 @@ async def startup_event():
     try:
         existing_admin = await db.admins.find_one({"email": "admin@paulaveiga.com"})
         if not existing_admin:
+            # Hash password properly
+            password_hash = bcrypt.hashpw("senha123".encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
             default_admin = {
                 "id": str(uuid.uuid4()),
                 "email": "admin@paulaveiga.com",
-                "password_hash": hash_password("senha123"),
+                "password_hash": password_hash,
                 "name": "Paula Veiga",
                 "created_at": datetime.now(timezone.utc).isoformat()
             }
@@ -602,6 +604,7 @@ async def startup_event():
             logger.info("Admin user already exists")
     except Exception as e:
         logger.error(f"Error during startup: {str(e)}")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
