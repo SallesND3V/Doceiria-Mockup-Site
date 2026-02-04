@@ -570,15 +570,17 @@ async def root():
 app.include_router(api_router)
 
 # Parse CORS origins
-cors_origins = os.environ.get('CORS_ORIGINS', '*')
-if cors_origins == '*':
-    allow_origins = []
-    allow_origin_regex = r".*"
-    allow_credentials = True
+cors_origins = os.environ.get('CORS_ORIGINS')
+default_origins = [
+    "https://doceiria-mockup-site.vercel.app",
+]
+if not cors_origins or cors_origins == '*':
+    allow_origins = default_origins
+    allow_origin_regex = r"https://.*\.vercel\.app"
 else:
     allow_origins = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
     allow_origin_regex = None
-    allow_credentials = True
+allow_credentials = True
 
 app.add_middleware(
     CORSMiddleware,
