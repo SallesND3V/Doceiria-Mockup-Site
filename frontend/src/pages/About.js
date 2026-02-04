@@ -96,7 +96,7 @@ const About = () => {
                 <div className="absolute -inset-4 bg-paula-accent/10 rounded-full blur-2xl" />
                 <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-paula-pink-medium shadow-2xl">
                   <img
-                    src={LOGO_PLACEHOLDER}
+                    src={logoUrl}
                     alt="Paula Veiga Logo"
                     className="w-full h-full object-cover"
                   />
