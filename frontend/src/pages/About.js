@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const INSTAGRAM_PROFILE_URL = "https://instagram.com/paula.veigacakes";
-const DEFAULT_LOGO = "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400";
+const DEFAULT_LOGO = "https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNjk4MmE2OThiM2E4ODE5MWE0MTdkNWU0NWU2OTMwYzY6ZmlsZV8wMDAwMDAwMDRkZDA3MWY1OTJkZjc3N2RhOGFmNzBjZSIsInRzIjoiMjA0ODgiLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjkxZWEyYWY2NGI2OTNiZjY2N2U2ZmIzMzRiZTk4YzA4YjQ2NzNkNjAwMGEyMzBkNGI4YzFhZGU1MmRhYTZiMzUiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ==";
 
 const About = () => {
   const [settings, setSettings] = useState({ logo_url: '' });
@@ -246,7 +246,7 @@ const About = () => {
               Será um prazer fazer parte do seu momento!
             </p>
             <motion.a
-              href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20conhecer%20mais%20sobre%20os%20bolos%20da%20Paula%20Veiga"
+              href="https://wa.me/558196679522?text=Olá!%20Gostaria%20de%20conhecer%20mais%20sobre%20os%20bolos%20da%20Paula%20Veiga"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-shine inline-flex items-center gap-3 bg-paula-cream text-paula-brown-dark hover:bg-white rounded-full px-10 py-5 font-bold text-lg shadow-2xl transition-colors font-body"

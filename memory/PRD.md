@@ -3,7 +3,7 @@
 ## Problema Original
 Site para doceria chamada Paula Veiga com:
 - Paleta: rosa claro, branco e marrom
-- Sistema de agendamento via WhatsApp (81984120292)
+- Sistema de agendamento via WhatsApp (8196679522)
 - Site profissional com efeitos e animações
 - Painel admin para gerenciar fotos dos bolos
 - Instagram: @paula.veigacakes

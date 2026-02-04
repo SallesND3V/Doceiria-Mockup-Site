@@ -174,7 +174,7 @@ const Gallery = () => {
                     Consulte valores pelo WhatsApp
                   </p>
                   <motion.a
-                    href={`https://wa.me/5581984120292?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${selectedCake.name}`)}`}
+                    href={`https://wa.me/558196679522?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${selectedCake.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-shine block text-center bg-paula-brown-dark hover:bg-paula-brown text-white rounded-full px-8 py-4 font-semibold transition-colors font-body"

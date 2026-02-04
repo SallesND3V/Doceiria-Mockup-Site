@@ -133,7 +133,7 @@ Enquanto não configura o Instagram, você pode adicionar fotos manualmente:
 ## Contato WhatsApp
 
 O site está configurado para direcionar pedidos para:
-**WhatsApp:** (81) 98412-0292
+**WhatsApp:** (81) 9667-9522
 
 ---
 

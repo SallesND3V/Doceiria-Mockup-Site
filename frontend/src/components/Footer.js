@@ -41,14 +41,14 @@ const Footer = () => {
             <h4 className="font-heading text-xl font-semibold mb-4">Contato</h4>
             <div className="space-y-3 font-body">
               <a 
-                href="https://wa.me/5581984120292"
+                href="https://wa.me/558196679522"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-paula-cream hover:text-white transition-colors"
                 data-testid="footer-whatsapp"
               >
                 <Phone size={18} />
-                (81) 98412-0292
+                (81) 9667-9522
               </a>
               <div className="flex items-start gap-3 text-paula-cream">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />

@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '5581984120292';
+  const phoneNumber = '558196679522';
   const message = encodeURIComponent('Olá! Gostaria de fazer um pedido na Paula Veiga Doces.');
   
   return (

@@ -37,7 +37,7 @@ export const CakeCard = ({ cake, onClick, showPrice = false }) => {
             onClick={(e) => {
               e.stopPropagation();
               const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${cake.name}`);
-              window.open(`https://wa.me/5581984120292?text=${message}`, '_blank');
+              window.open(`https://wa.me/558196679522?text=${message}`, '_blank');
             }}
             data-testid={`order-btn-${cake.id}`}
           >

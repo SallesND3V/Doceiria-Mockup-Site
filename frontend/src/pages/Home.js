@@ -22,9 +22,6 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Seed data first
-        await axios.post(`${API}/seed`).catch(() => {});
-        
         const [cakesRes, testimonialsRes, settingsRes] = await Promise.all([
           axios.get(`${API}/cakes?featured=true`),
           axios.get(`${API}/testimonials`),
@@ -109,7 +106,7 @@ const Home = () => {
 
               <div className="flex flex-wrap gap-4">
                 <motion.a
-                  href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda"
+                  href="https://wa.me/558196679522?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-shine bg-paula-brown-dark hover:bg-paula-brown text-white rounded-full px-8 py-4 font-semibold flex items-center gap-2 shadow-lg transition-all font-body"
@@ -244,8 +241,8 @@ const Home = () => {
             >
               <div className="absolute -inset-4 bg-paula-brown/10 rounded-3xl blur-2xl" />
               <img
-                src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=600"
-                alt="Confeitaria artesanal"
+                src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNjk4MmE2OThiM2E4ODE5MWE0MTdkNWU0NWU2OTMwYzY6ZmlsZV8wMDAwMDAwMDRkZDA3MWY1OTJkZjc3N2RhOGFmNzBjZSIsInRzIjoiMjA0ODgiLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjkxZWEyYWY2NGI2OTNiZjY2N2U2ZmIzMzRiZTk4YzA4YjQ2NzNkNjAwMGEyMzBkNGI4YzFhZGU1MmRhYTZiMzUiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ=="
+                alt="Paula Veiga"
                 className="relative rounded-3xl shadow-xl w-full object-cover aspect-[4/5]"
               />
             </motion.div>
@@ -381,7 +378,7 @@ const Home = () => {
               Estamos prontos para criar o bolo dos seus sonhos!
             </p>
             <motion.a
-              href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento"
+              href="https://wa.me/558196679522?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-shine inline-flex items-center gap-3 bg-[#25D366] text-white rounded-full px-10 py-5 font-bold text-lg shadow-2xl font-body"

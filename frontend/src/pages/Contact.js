@@ -9,8 +9,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'WhatsApp',
-      value: '(81) 98412-0292',
-      link: 'https://wa.me/5581984120292',
+      value: '(81) 9667-9522',
+      link: 'https://wa.me/558196679522',
       description: 'Nosso canal principal de atendimento'
     },
     {
@@ -128,7 +128,7 @@ const Contact = () => {
               </p>
               
               <motion.a
-                href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20para%20um%20bolo"
+                href="https://wa.me/558196679522?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20para%20um%20bolo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-shine inline-flex items-center gap-3 bg-[#25D366] text-white rounded-full px-10 py-5 font-bold text-lg shadow-2xl font-body"

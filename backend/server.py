@@ -454,7 +454,9 @@ async def get_stats(current_user: dict = Depends(get_current_user)):
 async def seed_data():
     # Check if already seeded
     existing_categories = await db.categories.count_documents({})
-    if existing_categories > 0:
+    existing_cakes = await db.cakes.count_documents({})
+    existing_testimonials = await db.testimonials.count_documents({})
+    if existing_categories > 0 or existing_cakes > 0 or existing_testimonials > 0:
         return {"message": "Dados já existentes"}
     
     # Create categories
