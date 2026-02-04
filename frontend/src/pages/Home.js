@@ -58,21 +58,21 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-paula-cream">
+    <div className="min-h-screen bg-paula-cream-light">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-paula-pink-light/50 via-white/30 to-paula-cream" />
+          <div className="absolute inset-0 bg-gradient-to-br from-paula-cream/50 via-white/30 to-paula-cream-light" />
           <motion.div 
-            className="absolute top-20 right-10 w-72 h-72 bg-paula-pink-medium/30 rounded-full blur-3xl"
+            className="absolute top-20 right-10 w-72 h-72 bg-paula-cream-dark/30 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 8, repeat: Infinity }}
           />
           <motion.div 
-            className="absolute bottom-20 left-10 w-96 h-96 bg-paula-pink-light/40 rounded-full blur-3xl"
+            className="absolute bottom-20 left-10 w-96 h-96 bg-paula-cream/40 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.6, 0.4] }}
             transition={{ duration: 10, repeat: Infinity }}
           />
@@ -87,18 +87,18 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <motion.div 
-                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-pink-200"
+                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-paula-cream-dark"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <Sparkles size={16} className="text-paula-accent" />
+                <Sparkles size={16} className="text-paula-brown-dark" />
                 <span className="text-sm font-body text-paula-brown">Doces Artesanais em Recife</span>
               </motion.div>
               
               <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-paula-brown-dark leading-tight mb-6">
                 Doçura em{' '}
-                <span className="text-paula-accent">Cada</span>{' '}
+                <span className="text-paula-brown">Cada</span>{' '}
                 Detalhe
               </h1>
               
@@ -112,8 +112,8 @@ const Home = () => {
                   href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shine bg-paula-accent hover:bg-pink-700 text-white rounded-full px-8 py-4 font-semibold flex items-center gap-2 shadow-lg transition-all font-body"
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(190, 24, 93, 0.3)" }}
+                  className="btn-shine bg-paula-brown-dark hover:bg-paula-brown text-white rounded-full px-8 py-4 font-semibold flex items-center gap-2 shadow-lg transition-all font-body"
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(61, 41, 20, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
                   data-testid="hero-cta-whatsapp"
                 >
@@ -124,7 +124,7 @@ const Home = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/galeria"
-                    className="border-2 border-paula-brown text-paula-brown hover:bg-paula-brown hover:text-white rounded-full px-8 py-4 font-semibold inline-block transition-colors font-body"
+                    className="border-2 border-paula-brown-dark text-paula-brown-dark hover:bg-paula-brown-dark hover:text-white rounded-full px-8 py-4 font-semibold inline-block transition-colors font-body"
                     data-testid="hero-cta-gallery"
                   >
                     Ver Galeria
@@ -142,7 +142,7 @@ const Home = () => {
             >
               <div className="relative">
                 <motion.div 
-                  className="absolute -inset-4 bg-gradient-to-br from-paula-pink-medium to-paula-accent rounded-3xl opacity-20 blur-2xl"
+                  className="absolute -inset-4 bg-gradient-to-br from-paula-cream-dark to-paula-brown rounded-3xl opacity-20 blur-2xl"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 />
@@ -155,22 +155,22 @@ const Home = () => {
               
               {/* Floating badges */}
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-pink-100"
+                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-paula-cream-dark"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <p className="text-3xl font-heading font-bold text-paula-accent">500+</p>
+                <p className="text-3xl font-heading font-bold text-paula-brown-dark">500+</p>
                 <p className="text-sm text-paula-brown font-body">Clientes Felizes</p>
               </motion.div>
               
               <motion.div
-                className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-pink-100"
+                className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-paula-cream-dark"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                <p className="text-3xl font-heading font-bold text-paula-accent">5★</p>
+                <p className="text-3xl font-heading font-bold text-paula-brown-dark">5★</p>
                 <p className="text-sm text-paula-brown font-body">Avaliação</p>
               </motion.div>
             </motion.div>
@@ -188,7 +188,7 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-4">
-              Nossos <span className="text-paula-accent">Destaques</span>
+              Nossos <span className="text-paula-brown">Destaques</span>
             </h2>
             <p className="text-paula-brown font-body max-w-2xl mx-auto">
               Conheça alguns dos nossos bolos mais amados pelos clientes
@@ -197,7 +197,7 @@ const Home = () => {
 
           {loading ? (
             <div className="flex justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-paula-accent"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-paula-brown-dark"></div>
             </div>
           ) : (
             <motion.div
@@ -223,7 +223,7 @@ const Home = () => {
           >
             <Link
               to="/galeria"
-              className="inline-flex items-center gap-2 text-paula-accent font-semibold hover:gap-4 transition-all font-body"
+              className="inline-flex items-center gap-2 text-paula-brown-dark font-semibold hover:gap-4 transition-all font-body"
               data-testid="see-all-cakes-link"
             >
               Ver todos os bolos <ArrowRight size={20} />
@@ -233,7 +233,7 @@ const Home = () => {
       </section>
 
       {/* About Teaser Section */}
-      <section className="py-24 bg-paula-pink-light/30">
+      <section className="py-24 bg-paula-cream/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -242,7 +242,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-paula-accent/10 rounded-3xl blur-2xl" />
+              <div className="absolute -inset-4 bg-paula-brown/10 rounded-3xl blur-2xl" />
               <img
                 src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=600"
                 alt="Confeitaria artesanal"
@@ -256,7 +256,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-6">
-                Sobre a <span className="text-paula-accent">Paula Veiga</span>
+                Sobre a <span className="text-paula-brown">Paula Veiga</span>
               </h2>
               <p className="text-paula-brown font-body mb-6 text-lg leading-relaxed">
                 Com mais de 10 anos de experiência em confeitaria artesanal, a Paula Veiga 
@@ -269,7 +269,7 @@ const Home = () => {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/sobre"
-                  className="inline-flex items-center gap-2 bg-paula-brown text-white rounded-full px-8 py-4 font-semibold hover:bg-paula-brown-dark transition-colors font-body"
+                  className="inline-flex items-center gap-2 bg-paula-brown-dark text-white rounded-full px-8 py-4 font-semibold hover:bg-paula-brown transition-colors font-body"
                   data-testid="about-link"
                 >
                   Conheça Nossa História <ArrowRight size={20} />
@@ -290,7 +290,7 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-4">
-              O Que Dizem <span className="text-paula-accent">Nossos Clientes</span>
+              O Que Dizem <span className="text-paula-brown">Nossos Clientes</span>
             </h2>
             <p className="text-paula-brown font-body max-w-2xl mx-auto">
               A satisfação de nossos clientes é nossa maior recompensa
@@ -306,7 +306,7 @@ const Home = () => {
       </section>
 
       {/* Instagram Section */}
-      <section className="py-24 bg-paula-pink-light/30">
+      <section className="py-24 bg-paula-cream/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -314,7 +314,7 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-4">
-              Siga no <span className="text-paula-accent">Instagram</span>
+              Siga no <span className="text-paula-brown">Instagram</span>
             </h2>
             <p className="text-paula-brown font-body mb-8">
               Acompanhe nossos lançamentos e criações exclusivas
@@ -363,8 +363,8 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-24 bg-paula-brown-dark text-white relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-paula-accent/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-paula-brown/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-paula-cream/10 rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
@@ -374,9 +374,9 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-6">
-              Pronto para Adoçar seu <span className="text-paula-pink-medium">Momento Especial</span>?
+              Pronto para Adoçar seu <span className="text-paula-cream">Momento Especial</span>?
             </h2>
-            <p className="text-pink-200 font-body mb-8 text-lg">
+            <p className="text-paula-cream font-body mb-8 text-lg">
               Entre em contato pelo WhatsApp e solicite seu orçamento personalizado. 
               Estamos prontos para criar o bolo dos seus sonhos!
             </p>
