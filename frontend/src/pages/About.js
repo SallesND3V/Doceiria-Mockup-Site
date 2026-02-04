@@ -50,14 +50,14 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-paula-cream">
+    <div className="min-h-screen bg-paula-cream-light">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-24 bg-paula-pink-light/30 relative overflow-hidden">
+      <section className="pt-32 pb-24 bg-paula-cream/30 relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div 
-            className="absolute top-20 right-20 w-72 h-72 bg-paula-pink-medium/30 rounded-full blur-3xl"
+            className="absolute top-20 right-20 w-72 h-72 bg-paula-cream-dark/30 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 8, repeat: Infinity }}
           />
@@ -70,7 +70,7 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
             >
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-paula-brown-dark mb-6">
-                Sobre a <span className="text-paula-accent">Paula Veiga</span>
+                Sobre a <span className="text-paula-brown">Paula Veiga</span>
               </h1>
               <p className="text-paula-brown font-body text-lg mb-6 leading-relaxed">
                 A Paula Veiga Doces nasceu de uma paixão que começou ainda na infância, 
@@ -93,8 +93,8 @@ const About = () => {
               className="relative flex items-center justify-center"
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-paula-accent/10 rounded-full blur-2xl" />
-                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-paula-pink-medium shadow-2xl">
+                <div className="absolute -inset-4 bg-paula-brown/10 rounded-full blur-2xl" />
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-paula-cream-dark shadow-2xl">
                   <img
                     src={logoUrl}
                     alt="Paula Veiga Logo"
@@ -125,7 +125,7 @@ const About = () => {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-4">
-              Nossos <span className="text-paula-accent">Valores</span>
+              Nossos <span className="text-paula-brown">Valores</span>
             </h2>
             <p className="text-paula-brown font-body max-w-2xl mx-auto">
               O que nos diferencia e guia cada criação
@@ -140,10 +140,10 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-paula-pink-light/30 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow"
+                className="bg-paula-cream/30 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow"
               >
-                <div className="w-16 h-16 bg-paula-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="text-paula-accent" size={32} />
+                <div className="w-16 h-16 bg-paula-brown/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="text-paula-brown-dark" size={32} />
                 </div>
                 <h3 className="font-heading text-xl font-semibold text-paula-brown-dark mb-3">
                   {value.title}
@@ -158,7 +158,7 @@ const About = () => {
       </section>
 
       {/* Story */}
-      <section className="py-24 bg-paula-pink-light/30">
+      <section className="py-24 bg-paula-cream/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -168,7 +168,7 @@ const About = () => {
               className="order-2 lg:order-1"
             >
               <h2 className="font-heading text-4xl sm:text-5xl font-bold text-paula-brown-dark mb-6">
-                Nossa <span className="text-paula-accent">Missão</span>
+                Nossa <span className="text-paula-brown">Missão</span>
               </h2>
               <p className="text-paula-brown font-body text-lg mb-6 leading-relaxed">
                 Transformar momentos especiais em memórias doces e inesquecíveis. 
@@ -183,15 +183,15 @@ const About = () => {
               
               <div className="flex flex-wrap gap-8">
                 <div>
-                  <p className="text-4xl font-heading font-bold text-paula-accent">10+</p>
+                  <p className="text-4xl font-heading font-bold text-paula-brown-dark">10+</p>
                   <p className="text-paula-brown font-body">Anos de experiência</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-heading font-bold text-paula-accent">500+</p>
+                  <p className="text-4xl font-heading font-bold text-paula-brown-dark">500+</p>
                   <p className="text-paula-brown font-body">Clientes satisfeitos</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-heading font-bold text-paula-accent">1000+</p>
+                  <p className="text-4xl font-heading font-bold text-paula-brown-dark">1000+</p>
                   <p className="text-paula-brown font-body">Bolos criados</p>
                 </div>
               </div>
@@ -241,7 +241,7 @@ const About = () => {
             <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-6">
               Vamos Criar Juntos?
             </h2>
-            <p className="text-pink-200 font-body mb-8 text-lg">
+            <p className="text-paula-cream font-body mb-8 text-lg">
               Entre em contato e conte-nos sobre sua ocasião especial. 
               Será um prazer fazer parte do seu momento!
             </p>
@@ -249,7 +249,7 @@ const About = () => {
               href="https://wa.me/5581984120292?text=Olá!%20Gostaria%20de%20conhecer%20mais%20sobre%20os%20bolos%20da%20Paula%20Veiga"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shine inline-flex items-center gap-3 bg-paula-accent hover:bg-pink-700 text-white rounded-full px-10 py-5 font-bold text-lg shadow-2xl transition-colors font-body"
+              className="btn-shine inline-flex items-center gap-3 bg-paula-cream text-paula-brown-dark hover:bg-white rounded-full px-10 py-5 font-bold text-lg shadow-2xl transition-colors font-body"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               data-testid="about-cta"

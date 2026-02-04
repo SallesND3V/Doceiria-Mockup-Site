@@ -44,18 +44,18 @@ const Gallery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-paula-cream">
+    <div className="min-h-screen bg-paula-cream-light">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-paula-pink-light/30">
+      <section className="pt-32 pb-16 bg-paula-cream/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-paula-brown-dark mb-4"
           >
-            Nossa <span className="text-paula-accent">Galeria</span>
+            Nossa <span className="text-paula-brown">Galeria</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ const Gallery = () => {
       </section>
 
       {/* Filter */}
-      <section className="py-8 bg-white sticky top-20 z-30 border-b border-pink-100 shadow-sm">
+      <section className="py-8 bg-white sticky top-20 z-30 border-b border-paula-cream-dark shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center gap-4 overflow-x-auto pb-2">
             <Filter size={20} className="text-paula-brown flex-shrink-0" />
@@ -79,8 +79,8 @@ const Gallery = () => {
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-2 rounded-full font-body font-medium transition-colors flex-shrink-0 ${
                 selectedCategory === 'all'
-                  ? 'bg-paula-accent text-white'
-                  : 'bg-paula-pink-light text-paula-brown hover:bg-paula-pink-medium'
+                  ? 'bg-paula-brown-dark text-white'
+                  : 'bg-paula-cream text-paula-brown hover:bg-paula-cream-dark'
               }`}
               data-testid="filter-all"
             >
@@ -94,8 +94,8 @@ const Gallery = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-2 rounded-full font-body font-medium transition-colors flex-shrink-0 ${
                   selectedCategory === category.id
-                    ? 'bg-paula-accent text-white'
-                    : 'bg-paula-pink-light text-paula-brown hover:bg-paula-pink-medium'
+                    ? 'bg-paula-brown-dark text-white'
+                    : 'bg-paula-cream text-paula-brown hover:bg-paula-cream-dark'
                 }`}
                 data-testid={`filter-${category.slug}`}
               >
@@ -111,7 +111,7 @@ const Gallery = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {loading ? (
             <div className="flex justify-center py-20">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-paula-accent"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-paula-brown-dark"></div>
             </div>
           ) : filteredCakes.length === 0 ? (
             <div className="text-center py-20">
@@ -162,7 +162,7 @@ const Gallery = () => {
                   </DialogTitle>
                 </DialogHeader>
                 <div className="mt-2 mb-4">
-                  <span className="inline-block bg-paula-pink-light text-paula-brown px-3 py-1 rounded-full text-sm font-body">
+                  <span className="inline-block bg-paula-cream text-paula-brown px-3 py-1 rounded-full text-sm font-body">
                     {getCategoryName(selectedCake.category_id)}
                   </span>
                 </div>
@@ -170,19 +170,19 @@ const Gallery = () => {
                   {selectedCake.description}
                 </p>
                 <div className="mt-6">
-                  <p className="text-paula-accent font-semibold font-body mb-4">
+                  <p className="text-paula-brown-dark font-semibold font-body mb-4">
                     Consulte valores pelo WhatsApp
                   </p>
                   <motion.a
-                    href={`https://wa.me/5581984120292?text=${encodeURIComponent(`Olá! Gostaria de encomendar o ${selectedCake.name}`)}`}
+                    href={`https://wa.me/5581984120292?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${selectedCake.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-shine block text-center bg-paula-accent hover:bg-pink-700 text-white rounded-full px-8 py-4 font-semibold transition-colors font-body"
+                    className="btn-shine block text-center bg-paula-brown-dark hover:bg-paula-brown text-white rounded-full px-8 py-4 font-semibold transition-colors font-body"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     data-testid="lightbox-order-btn"
                   >
-                    Encomendar pelo WhatsApp
+                    Falar pelo WhatsApp
                   </motion.a>
                 </div>
               </div>

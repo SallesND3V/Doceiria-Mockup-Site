@@ -37,18 +37,18 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-paula-cream">
+    <div className="min-h-screen bg-paula-cream-light">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-paula-pink-light/30">
+      <section className="pt-32 pb-16 bg-paula-cream/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-paula-brown-dark mb-4"
           >
-            Entre em <span className="text-paula-accent">Contato</span>
+            Entre em <span className="text-paula-brown">Contato</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -72,10 +72,10 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow border border-pink-100"
+                className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow border border-paula-cream-dark"
               >
-                <div className="w-16 h-16 bg-paula-pink-light rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <info.icon className="text-paula-accent" size={28} />
+                <div className="w-16 h-16 bg-paula-cream rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <info.icon className="text-paula-brown-dark" size={28} />
                 </div>
                 <h3 className="font-heading text-xl font-semibold text-paula-brown-dark mb-2">
                   {info.title}
@@ -85,7 +85,7 @@ const Contact = () => {
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-paula-accent font-body font-medium hover:underline"
+                    className="text-paula-brown-dark font-body font-medium hover:underline"
                     data-testid={`contact-${info.title.toLowerCase()}`}
                   >
                     {info.value}
@@ -109,9 +109,9 @@ const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-paula-pink-light to-paula-pink-medium/50 rounded-3xl p-12 text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-paula-cream to-paula-cream-dark/50 rounded-3xl p-12 text-center relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-paula-accent/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-paula-brown/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/50 rounded-full blur-3xl" />
             
             <div className="relative z-10">
@@ -147,7 +147,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-paula-pink-light/30">
+      <section className="py-24 bg-paula-cream/30">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -156,7 +156,7 @@ const Contact = () => {
             className="text-center mb-12"
           >
             <h2 className="font-heading text-4xl font-bold text-paula-brown-dark mb-4">
-              Perguntas <span className="text-paula-accent">Frequentes</span>
+              Perguntas <span className="text-paula-brown">Frequentes</span>
             </h2>
           </motion.div>
 
@@ -185,7 +185,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-pink-100"
+                className="bg-white rounded-2xl p-6 shadow-sm border border-paula-cream-dark"
               >
                 <h3 className="font-heading text-lg font-semibold text-paula-brown-dark mb-2">
                   {faq.q}
