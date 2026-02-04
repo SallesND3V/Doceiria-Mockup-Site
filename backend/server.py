@@ -569,12 +569,11 @@ async def root():
 # Include the router in the main app
 app.include_router(api_router)
 
-# Configure CORS to allow all origins
+# Simple CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=["https://doceiria-mockup-site.vercel.app", "http://localhost:3000"],
-    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
