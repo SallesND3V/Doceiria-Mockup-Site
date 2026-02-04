@@ -7,19 +7,17 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
-  			'paula-pink': {
-  				light: '#FCE7F3',
-  				medium: '#FBCFE8',
-  				DEFAULT: '#F9A8D4',
-  				dark: '#EC4899'
-  			},
   			'paula-brown': {
   				light: '#8B7355',
-  				DEFAULT: '#5D4037',
-  				dark: '#4A3728'
+  				DEFAULT: '#5C4033',
+  				dark: '#3D2914'
   			},
-  			'paula-cream': '#FFFBF0',
-  			'paula-accent': '#BE185D',
+  			'paula-cream': {
+  				light: '#F5F0E8',
+  				DEFAULT: '#E5D9C3',
+  				dark: '#D4C4A8'
+  			},
+  			'paula-accent': '#5C4033',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
