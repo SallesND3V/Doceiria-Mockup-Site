@@ -688,6 +688,206 @@ const TestimonialsPage = () => {
   );
 };
 
+// Settings Page
+const SettingsPage = () => {
+  const [settings, setSettings] = useState({
+    hero_image_url: '',
+    logo_url: '',
+    instagram_access_token: '',
+    instagram_user_id: ''
+  });
+  const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const { getAuthHeaders } = useAuth();
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await axios.get(`${API}/settings/admin`, { headers: getAuthHeaders() });
+        setSettings(response.data);
+      } catch (error) {
+        console.error('Error fetching settings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSettings();
+  }, [getAuthHeaders]);
+
+  const handleSave = async () => {
+    try {
+      await axios.put(`${API}/settings`, settings, { headers: getAuthHeaders() });
+      toast.success('Configurações salvas!');
+    } catch (error) {
+      toast.error('Erro ao salvar configurações');
+    }
+  };
+
+  const handleInstagramSync = async () => {
+    setSyncing(true);
+    try {
+      const response = await axios.post(`${API}/instagram/sync`, {}, { headers: getAuthHeaders() });
+      toast.success(response.data.message);
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Erro ao sincronizar com Instagram');
+    } finally {
+      setSyncing(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-paula-accent" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl">
+      <h1 className="font-heading text-3xl font-bold text-paula-brown-dark mb-8">Configurações</h1>
+      
+      {/* Site Images */}
+      <Card className="border-pink-100 mb-8">
+        <CardHeader>
+          <CardTitle className="font-heading text-xl">Imagens do Site</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <Label className="font-body">URL da Logo (foto de perfil)</Label>
+            <p className="text-sm text-paula-brown/60 mb-2">
+              Cole aqui a URL da sua logo ou foto de perfil do Instagram
+            </p>
+            <div className="flex gap-4 items-start">
+              {settings.logo_url && (
+                <img src={settings.logo_url} alt="Logo preview" className="w-20 h-20 object-cover rounded-full border-2 border-pink-200" />
+              )}
+              <Input
+                value={settings.logo_url}
+                onChange={(e) => setSettings({ ...settings, logo_url: e.target.value })}
+                placeholder="https://..."
+                className="flex-1"
+                data-testid="logo-url-input"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Label className="font-body">URL da Imagem Principal (Hero)</Label>
+            <p className="text-sm text-paula-brown/60 mb-2">
+              Imagem que aparece na página inicial
+            </p>
+            <div className="flex gap-4 items-start">
+              {settings.hero_image_url && (
+                <img src={settings.hero_image_url} alt="Hero preview" className="w-20 h-20 object-cover rounded-lg border border-pink-200" />
+              )}
+              <Input
+                value={settings.hero_image_url}
+                onChange={(e) => setSettings({ ...settings, hero_image_url: e.target.value })}
+                placeholder="https://..."
+                className="flex-1"
+                data-testid="hero-url-input"
+              />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Instagram Integration */}
+      <Card className="border-pink-100 mb-8">
+        <CardHeader>
+          <CardTitle className="font-heading text-xl flex items-center gap-2">
+            <Instagram size={24} className="text-pink-600" />
+            Integração com Instagram
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Alert className="bg-amber-50 border-amber-200">
+            <AlertCircle className="h-4 w-4 text-amber-600" />
+            <AlertDescription className="text-amber-800 font-body">
+              <strong>Para sincronização automática, você precisa:</strong>
+              <ol className="list-decimal ml-4 mt-2 space-y-1">
+                <li>Converter @paula.veigacakes para conta Business ou Creator</li>
+                <li>Criar um aplicativo no <a href="https://developers.facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Meta Developer Portal</a></li>
+                <li>Gerar um Access Token com permissão instagram_basic</li>
+                <li>Copiar o User ID do Instagram</li>
+              </ol>
+            </AlertDescription>
+          </Alert>
+          
+          <div>
+            <Label className="font-body">Instagram User ID</Label>
+            <Input
+              value={settings.instagram_user_id || ''}
+              onChange={(e) => setSettings({ ...settings, instagram_user_id: e.target.value })}
+              placeholder="Ex: 17841400000000000"
+              data-testid="instagram-user-id-input"
+            />
+          </div>
+          
+          <div>
+            <Label className="font-body">Instagram Access Token</Label>
+            <Input
+              type="password"
+              value={settings.instagram_access_token || ''}
+              onChange={(e) => setSettings({ ...settings, instagram_access_token: e.target.value })}
+              placeholder="Cole seu access token aqui"
+              data-testid="instagram-token-input"
+            />
+          </div>
+          
+          <div className="flex gap-4">
+            <Button
+              onClick={handleInstagramSync}
+              disabled={syncing || !settings.instagram_access_token}
+              className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 hover:opacity-90"
+              data-testid="sync-instagram-btn"
+            >
+              {syncing ? (
+                <RefreshCw size={18} className="mr-2 animate-spin" />
+              ) : (
+                <Instagram size={18} className="mr-2" />
+              )}
+              Sincronizar Fotos do Instagram
+            </Button>
+            
+            <a
+              href="https://www.instagram.com/paula.veigacakes/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-pink-200 rounded-lg text-paula-brown hover:bg-pink-50 transition-colors font-body"
+            >
+              <ExternalLink size={16} />
+              Ver Perfil
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Manual Instructions */}
+      <Card className="border-pink-100 mb-8">
+        <CardHeader>
+          <CardTitle className="font-heading text-xl">Adicionar Fotos Manualmente</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-paula-brown font-body mb-4">
+            Enquanto não configura a integração automática, você pode adicionar fotos do Instagram manualmente:
+          </p>
+          <ol className="list-decimal ml-4 space-y-2 text-paula-brown font-body">
+            <li>Abra a foto desejada no Instagram (pelo computador)</li>
+            <li>Clique com o botão direito na imagem e selecione "Copiar endereço da imagem"</li>
+            <li>Vá em "Bolos" → "Adicionar Bolo" e cole a URL no campo de imagem</li>
+          </ol>
+        </CardContent>
+      </Card>
+
+      <Button onClick={handleSave} className="bg-paula-accent hover:bg-pink-700" data-testid="save-settings-btn">
+        Salvar Configurações
+      </Button>
+    </div>
+  );
+};
+
 // Main Admin Dashboard
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
