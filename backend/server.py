@@ -572,7 +572,7 @@ app.include_router(api_router)
 # Configure CORS to allow all origins
 app.add_middleware(
     CORSMiddleware,
-    allow_credential_requests=True,
+    allow_credentials=True,
     allow_origins=["https://doceiria-mockup-site.vercel.app", "http://localhost:3000"],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_methods=["*"],
