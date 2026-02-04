@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-40 glass border-b border-pink-200/50"
+      className="fixed top-0 left-0 right-0 z-40 glass border-b border-paula-cream-dark/50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -44,15 +44,15 @@ const Navbar = () => {
                 data-testid={`nav-link-${link.label.toLowerCase()}`}
                 className={`relative font-body font-medium transition-colors ${
                   isActive(link.path) 
-                    ? 'text-paula-accent' 
-                    : 'text-paula-brown hover:text-paula-accent'
+                    ? 'text-paula-brown-dark' 
+                    : 'text-paula-brown hover:text-paula-brown-dark'
                 }`}
               >
                 {link.label}
                 {isActive(link.path) && (
                   <motion.div 
                     layoutId="navIndicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-paula-accent rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-paula-brown-dark rounded-full"
                   />
                 )}
               </Link>
@@ -61,7 +61,7 @@ const Navbar = () => {
               href="https://www.instagram.com/paula.veigacakes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-paula-brown hover:text-paula-accent transition-colors"
+              className="text-paula-brown hover:text-paula-brown-dark transition-colors"
               data-testid="instagram-link"
             >
               <Instagram size={22} />
@@ -86,7 +86,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-pink-200"
+            className="md:hidden bg-white border-t border-paula-cream-dark"
           >
             <div className="px-6 py-4 space-y-4">
               {navLinks.map((link) => (
@@ -96,7 +96,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`block font-body font-medium py-2 ${
                     isActive(link.path) 
-                      ? 'text-paula-accent' 
+                      ? 'text-paula-brown-dark' 
                       : 'text-paula-brown'
                   }`}
                 >
