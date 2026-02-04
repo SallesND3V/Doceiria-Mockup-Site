@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Award, Clock, Sparkles } from 'lucide-react';
+import { Heart, Award, Clock, Sparkles, Instagram } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+
+// Logo do Instagram - URL da foto de perfil do @paula.veigacakes
+const INSTAGRAM_PROFILE_URL = "https://instagram.com/paula.veigacakes";
+// Placeholder para logo - admin deve configurar a URL real no painel
+const LOGO_PLACEHOLDER = "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400";
 
 const About = () => {
   const values = [
