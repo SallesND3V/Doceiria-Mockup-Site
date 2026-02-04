@@ -74,14 +74,26 @@ const About = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="relative"
+              className="relative flex items-center justify-center"
             >
-              <div className="absolute -inset-4 bg-paula-accent/10 rounded-3xl blur-2xl" />
-              <img
-                src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=600"
-                alt="Paula Veiga confeiteira"
-                className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]"
-              />
+              <div className="relative">
+                <div className="absolute -inset-4 bg-paula-accent/10 rounded-full blur-2xl" />
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-paula-pink-medium shadow-2xl">
+                  <img
+                    src={LOGO_PLACEHOLDER}
+                    alt="Paula Veiga Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <a
+                  href={INSTAGRAM_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
+                >
+                  <Instagram size={24} />
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
