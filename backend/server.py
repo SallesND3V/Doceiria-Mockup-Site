@@ -569,11 +569,14 @@ async def root():
 @api_router.get("/debug/admin-check")
 async def check_admin():
     """Debug endpoint to check if admin exists"""
-    admin = await db.admins.find_one({"email": "admin@paulaveiga.com"})
-    if admin:
-        return {"admin_exists": True, "email": admin["email"]}
-    else:
-        return {"admin_exists": False, "message": "No admin found"}
+    try:
+        admin = await db.admins.find_one({"email": "admin@paulaveiga.com"})
+        if admin:
+            return {"admin_exists": True, "email": admin["email"]}
+        else:
+            return {"admin_exists": False, "message": "No admin found"}
+    except Exception as e:
+        return {"error": str(e), "admin_exists": False}
 
 # Include the router in the main app
 app.include_router(api_router)
