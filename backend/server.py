@@ -78,15 +78,17 @@ class Cake(BaseModel):
     price: float
     category_id: str
     image_url: str
+    instagram_url: Optional[str] = None
     featured: bool = False
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class CakeCreate(BaseModel):
     name: str
     description: str
-    price: float
+    price: float = 0
     category_id: str
     image_url: str
+    instagram_url: Optional[str] = None
     featured: bool = False
 
 class CakeUpdate(BaseModel):
@@ -95,6 +97,7 @@ class CakeUpdate(BaseModel):
     price: Optional[float] = None
     category_id: Optional[str] = None
     image_url: Optional[str] = None
+    instagram_url: Optional[str] = None
     featured: Optional[bool] = None
 
 class Testimonial(BaseModel):
@@ -109,6 +112,21 @@ class TestimonialCreate(BaseModel):
     author_name: str
     content: str
     rating: int = 5
+
+class SiteSettings(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = "site_settings"
+    hero_image_url: str = ""
+    logo_url: str = ""
+    instagram_access_token: Optional[str] = None
+    instagram_user_id: Optional[str] = None
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class SiteSettingsUpdate(BaseModel):
+    hero_image_url: Optional[str] = None
+    logo_url: Optional[str] = None
+    instagram_access_token: Optional[str] = None
+    instagram_user_id: Optional[str] = None
 
 # ==================== Auth Utils ====================
 
