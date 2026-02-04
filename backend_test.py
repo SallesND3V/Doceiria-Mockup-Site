@@ -370,6 +370,121 @@ class BakeryAPITester:
         print("  ⚠️ Skipping image upload test - requires file handling")
         return True
 
+    def test_get_settings(self):
+        """Test getting site settings (public endpoint)"""
+        success, response = self.run_test(
+            "Get Site Settings (Public)",
+            "GET",
+            "settings",
+            200
+        )
+        
+        if success:
+            print(f"  Hero Image URL: {response.get('hero_image_url', 'Not set')[:50]}...")
+            print(f"  Logo URL: {response.get('logo_url', 'Not set')[:50]}...")
+            # Instagram token should not be exposed in public endpoint
+            has_token = 'instagram_access_token' not in response
+            print(f"  Instagram token properly hidden: {has_token}")
+        return success
+
+    def test_get_settings_admin(self):
+        """Test getting site settings (admin endpoint)"""
+        if not self.token:
+            print("  ⚠️ Skipping - no auth token")
+            return True
+            
+        success, response = self.run_test(
+            "Get Site Settings (Admin)",
+            "GET",
+            "settings/admin",
+            200,
+            auth_required=True
+        )
+        
+        if success:
+            print(f"  Hero Image URL: {response.get('hero_image_url', 'Not set')[:50]}...")
+            print(f"  Logo URL: {response.get('logo_url', 'Not set')[:50]}...")
+            print(f"  Instagram User ID: {response.get('instagram_user_id', 'Not set')}")
+            print(f"  Instagram Token Set: {'Yes' if response.get('instagram_access_token') else 'No'}")
+        return success
+
+    def test_update_settings(self):
+        """Test updating site settings"""
+        if not self.token:
+            print("  ⚠️ Skipping - no auth token")
+            return True
+            
+        settings_data = {
+            "hero_image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600",
+            "logo_url": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400"
+        }
+        
+        success, response = self.run_test(
+            "Update Site Settings",
+            "PUT",
+            "settings",
+            200,
+            data=settings_data,
+            auth_required=True
+        )
+        
+        if success:
+            print(f"  ✅ Settings updated successfully")
+            print(f"  Hero Image: {response.get('hero_image_url', 'Not set')[:50]}...")
+            print(f"  Logo URL: {response.get('logo_url', 'Not set')[:50]}...")
+        return success
+
+    def test_instagram_sync_without_config(self):
+        """Test Instagram sync endpoint without configuration (should fail)"""
+        if not self.token:
+            print("  ⚠️ Skipping - no auth token")
+            return True
+            
+        success, response = self.run_test(
+            "Instagram Sync (No Config - Should Fail)",
+            "POST",
+            "instagram/sync",
+            400,  # Expecting 400 error
+            data={},
+            auth_required=True
+        )
+        
+        if success:
+            print(f"  ✅ Properly returns error when Instagram not configured")
+        return success
+
+    def test_login_with_existing_admin(self):
+        """Test login with the pre-created admin account"""
+        admin_data = {
+            "email": "admin@paulaveiga.com",
+            "password": "senha123"
+        }
+        
+        success, response = self.run_test(
+            "Login with Pre-created Admin",
+            "POST",
+            "auth/login",
+            200,
+            data=admin_data
+        )
+        
+        if success and 'access_token' in response:
+            # Store this token for admin tests
+            old_token = self.token
+            self.token = response['access_token']
+            print(f"  ✅ Admin login successful")
+            print(f"  Admin name: {response.get('name', 'N/A')}")
+            
+            # Test admin-specific endpoints
+            self.test_get_settings_admin()
+            self.test_update_settings()
+            self.test_instagram_sync_without_config()
+            
+            # Restore original token
+            self.token = old_token
+            return True
+        return False
+
     def cleanup_test_data(self):
         """Clean up created test data"""
         if not self.token:
