@@ -18,9 +18,16 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+try:
+    mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+    db_name = os.environ.get('DB_NAME', 'paula_veiga_doces')
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+    logger = logging.getLogger(__name__)
+    logger.info(f"MongoDB connection initialized with database: {db_name}")
+except Exception as e:
+    logger = logging.getLogger(__name__)
+    logger.error(f"Error initializing MongoDB: {str(e)}")
 
 # JWT Settings
 JWT_SECRET = os.environ.get('JWT_SECRET', 'paula-veiga-secret-key-2024')
@@ -192,6 +199,38 @@ async def login(data: AdminLogin):
 @api_router.get("/auth/me")
 async def get_me(current_user: dict = Depends(get_current_user)):
     return {"id": current_user["id"], "email": current_user["email"], "name": current_user["name"]}
+
+@api_router.get("/test-db")
+async def test_db():
+    """Test MongoDB connection and return database stats"""
+    try:
+        # Try to ping the database
+        await client.admin.command('ping')
+        
+        # Get collection stats
+        collections = await db.list_collection_names()
+        
+        admin_count = await db.admins.count_documents({})
+        cakes_count = await db.cakes.count_documents({})
+        categories_count = await db.categories.count_documents({})
+        
+        return {
+            "status": "connected",
+            "database": db_name,
+            "collections": collections,
+            "document_counts": {
+                "admins": admin_count,
+                "cakes": cakes_count,
+                "categories": categories_count
+            }
+        }
+    except Exception as e:
+        logger.error(f"Database connection error: {str(e)}")
+        return {
+            "status": "error",
+            "message": str(e),
+            "mongo_url": mongo_url[:50] + "..." if mongo_url else "Not set"
+        }
 
 # ==================== Category Routes ====================
 
