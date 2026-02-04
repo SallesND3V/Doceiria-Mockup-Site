@@ -10,9 +10,13 @@ import TestimonialCard from '@/components/TestimonialCard';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
+// Default images
+const DEFAULT_HERO_IMAGE = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600";
+
 const Home = () => {
   const [featuredCakes, setFeaturedCakes] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
+  const [settings, setSettings] = useState({ hero_image_url: '', logo_url: '' });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,12 +25,14 @@ const Home = () => {
         // Seed data first
         await axios.post(`${API}/seed`).catch(() => {});
         
-        const [cakesRes, testimonialsRes] = await Promise.all([
+        const [cakesRes, testimonialsRes, settingsRes] = await Promise.all([
           axios.get(`${API}/cakes?featured=true`),
-          axios.get(`${API}/testimonials`)
+          axios.get(`${API}/testimonials`),
+          axios.get(`${API}/settings`).catch(() => ({ data: {} }))
         ]);
         setFeaturedCakes(cakesRes.data.slice(0, 4));
         setTestimonials(testimonialsRes.data);
+        setSettings(settingsRes.data || {});
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -35,6 +41,8 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
+  const heroImage = settings.hero_image_url || DEFAULT_HERO_IMAGE;
 
   const containerVariants = {
     hidden: { opacity: 0 },
