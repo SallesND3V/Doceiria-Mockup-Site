@@ -543,9 +543,15 @@ class BakeryAPITester:
         self.test_get_testimonials()
         self.test_create_testimonial()
         
+        # Settings tests
+        self.test_get_settings()
+        
         # Admin tests
         self.test_get_stats()
         self.test_image_upload()
+        
+        # Test with pre-created admin account
+        self.test_login_with_existing_admin()
         
         # Cleanup
         self.cleanup_test_data()
