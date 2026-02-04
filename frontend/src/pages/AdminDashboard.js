@@ -31,6 +31,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     { path: '/admin/cakes', icon: Cake, label: 'Bolos' },
     { path: '/admin/categories', icon: FolderOpen, label: 'Categorias' },
     { path: '/admin/testimonials', icon: MessageSquare, label: 'Depoimentos' },
+    { path: '/admin/settings', icon: Settings, label: 'Configurações' },
   ];
 
   const handleLogout = () => {
