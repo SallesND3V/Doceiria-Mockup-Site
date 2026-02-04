@@ -40,13 +40,13 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-paula-cream flex items-center justify-center p-6">
+    <div className="min-h-screen bg-paula-cream-light flex items-center justify-center p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
       >
-        <div className="bg-white rounded-3xl shadow-xl p-8 border border-pink-100">
+        <div className="bg-white rounded-3xl shadow-xl p-8 border border-paula-cream-dark">
           {/* Logo */}
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
@@ -60,12 +60,12 @@ const AdminLogin = () => {
           </div>
 
           {/* Tabs */}
-          <div className="flex mb-8 bg-paula-pink-light/50 rounded-full p-1">
+          <div className="flex mb-8 bg-paula-cream/50 rounded-full p-1">
             <button
               onClick={() => setIsLogin(true)}
               className={`flex-1 py-2 rounded-full font-body font-medium transition-colors ${
                 isLogin
-                  ? 'bg-paula-accent text-white'
+                  ? 'bg-paula-brown-dark text-white'
                   : 'text-paula-brown hover:text-paula-brown-dark'
               }`}
               data-testid="login-tab"
@@ -76,7 +76,7 @@ const AdminLogin = () => {
               onClick={() => setIsLogin(false)}
               className={`flex-1 py-2 rounded-full font-body font-medium transition-colors ${
                 !isLogin
-                  ? 'bg-paula-accent text-white'
+                  ? 'bg-paula-brown-dark text-white'
                   : 'text-paula-brown hover:text-paula-brown-dark'
               }`}
               data-testid="register-tab"
@@ -99,7 +99,7 @@ const AdminLogin = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-10 border-pink-200 focus:border-paula-accent"
+                    className="pl-10 border-paula-cream-dark focus:border-paula-brown-dark"
                     placeholder="Seu nome"
                     required={!isLogin}
                     data-testid="name-input"
@@ -119,7 +119,7 @@ const AdminLogin = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 border-pink-200 focus:border-paula-accent"
+                  className="pl-10 border-paula-cream-dark focus:border-paula-brown-dark"
                   placeholder="seu@email.com"
                   required
                   data-testid="email-input"
@@ -138,7 +138,7 @@ const AdminLogin = () => {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 pr-10 border-pink-200 focus:border-paula-accent"
+                  className="pl-10 pr-10 border-paula-cream-dark focus:border-paula-brown-dark"
                   placeholder="••••••••"
                   required
                   data-testid="password-input"
@@ -156,7 +156,7 @@ const AdminLogin = () => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-paula-accent hover:bg-pink-700 text-white font-body font-semibold py-6 rounded-full"
+              className="w-full bg-paula-brown-dark hover:bg-paula-brown text-white font-body font-semibold py-6 rounded-full"
               data-testid="submit-btn"
             >
               {loading ? (
@@ -172,7 +172,7 @@ const AdminLogin = () => {
           <div className="mt-8 text-center">
             <Link
               to="/"
-              className="text-paula-brown font-body text-sm hover:text-paula-accent transition-colors"
+              className="text-paula-brown font-body text-sm hover:text-paula-brown-dark transition-colors"
             >
               ← Voltar ao site
             </Link>
