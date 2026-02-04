@@ -147,7 +147,7 @@ const Home = () => {
                   transition={{ duration: 4, repeat: Infinity }}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"
+                  src={heroImage}
                   alt="Bolo artesanal Paula Veiga"
                   className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square"
                 />
