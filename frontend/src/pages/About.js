@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Award, Clock, Sparkles, Instagram } from 'lucide-react';
+import axios from 'axios';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Logo do Instagram - URL da foto de perfil do @paula.veigacakes
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const INSTAGRAM_PROFILE_URL = "https://instagram.com/paula.veigacakes";
-// Placeholder para logo - admin deve configurar a URL real no painel
-const LOGO_PLACEHOLDER = "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400";
+const DEFAULT_LOGO = "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400";
 
 const About = () => {
+  const [settings, setSettings] = useState({ logo_url: '' });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await axios.get(`${API}/settings`);
+        setSettings(response.data || {});
+      } catch (error) {
+        console.error('Error fetching settings:', error);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const logoUrl = settings.logo_url || DEFAULT_LOGO;
+
   const values = [
     {
       icon: Heart,
