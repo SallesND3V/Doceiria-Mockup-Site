@@ -5,13 +5,13 @@ import { Star, Quote } from 'lucide-react';
 const TestimonialCard = ({ testimonial }) => {
   return (
     <motion.div
-      className="bg-white p-8 rounded-2xl border border-pink-200 relative shadow-sm"
+      className="bg-white p-8 rounded-2xl border border-paula-cream-dark relative shadow-sm"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Quote className="absolute top-4 right-4 text-paula-pink-medium" size={32} />
+      <Quote className="absolute top-4 right-4 text-paula-cream-dark" size={32} />
       
       {/* Stars */}
       <div className="flex gap-1 mb-4">
@@ -27,8 +27,8 @@ const TestimonialCard = ({ testimonial }) => {
 
       {/* Author */}
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full bg-paula-pink-light flex items-center justify-center">
-          <span className="font-heading text-paula-accent text-xl">
+        <div className="w-12 h-12 rounded-full bg-paula-cream flex items-center justify-center">
+          <span className="font-heading text-paula-brown-dark text-xl">
             {testimonial.author_name.charAt(0)}
           </span>
         </div>
