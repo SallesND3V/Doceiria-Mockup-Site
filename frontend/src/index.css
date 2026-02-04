@@ -5,12 +5,12 @@
 @tailwind utilities;
 
 :root {
-    --pink-light: #FCE7F3;
-    --pink-medium: #FBCFE8;
-    --pink-accent: #BE185D;
-    --brown-dark: #4A3728;
-    --brown-medium: #5D4037;
-    --cream: #FFFBF0;
+    --brown-dark: #3D2914;
+    --brown-medium: #5C4033;
+    --brown-light: #8B7355;
+    --cream-dark: #D4C4A8;
+    --cream: #E5D9C3;
+    --cream-light: #F5F0E8;
     --white: #FFFFFF;
 }
 
@@ -27,7 +27,7 @@ html {
 body {
     font-family: 'Manrope', sans-serif;
     color: var(--brown-dark);
-    background-color: var(--cream);
+    background-color: var(--cream-light);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--pink-light);
+    background: var(--cream);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Selection */
 ::selection {
-    background-color: var(--pink-medium);
+    background-color: var(--cream-dark);
     color: var(--brown-dark);
 }
 
@@ -119,14 +119,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glass effect */
 .glass {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
 /* Gradient text */
 .gradient-text {
-    background: linear-gradient(135deg, var(--brown-dark), var(--pink-accent));
+    background: linear-gradient(135deg, var(--brown-dark), var(--brown-medium));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -168,30 +168,30 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer base {
     :root {
-        --background: 40 100% 97%;
-        --foreground: 25 30% 22%;
+        --background: 40 30% 95%;
+        --foreground: 25 40% 15%;
         --card: 0 0% 100%;
-        --card-foreground: 25 30% 22%;
+        --card-foreground: 25 40% 15%;
         --popover: 0 0% 100%;
-        --popover-foreground: 25 30% 22%;
-        --primary: 335 82% 43%;
+        --popover-foreground: 25 40% 15%;
+        --primary: 25 40% 25%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 330 100% 95%;
-        --secondary-foreground: 25 30% 22%;
-        --muted: 330 100% 95%;
+        --secondary: 40 30% 88%;
+        --secondary-foreground: 25 40% 15%;
+        --muted: 40 30% 88%;
         --muted-foreground: 25 20% 40%;
-        --accent: 330 100% 95%;
-        --accent-foreground: 25 30% 22%;
+        --accent: 40 30% 88%;
+        --accent-foreground: 25 40% 15%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 330 50% 85%;
-        --input: 330 50% 85%;
-        --ring: 335 82% 43%;
-        --chart-1: 335 82% 43%;
-        --chart-2: 25 30% 35%;
-        --chart-3: 330 100% 95%;
-        --chart-4: 40 100% 97%;
-        --chart-5: 25 50% 25%;
+        --border: 40 30% 80%;
+        --input: 40 30% 80%;
+        --ring: 25 40% 25%;
+        --chart-1: 25 40% 25%;
+        --chart-2: 40 30% 70%;
+        --chart-3: 40 30% 88%;
+        --chart-4: 40 30% 95%;
+        --chart-5: 25 50% 20%;
         --radius: 0.75rem;
     }
 }
